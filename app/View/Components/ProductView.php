@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Produtos;
 
 class ProductView extends Component
 {
@@ -11,9 +12,9 @@ class ProductView extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id)
     {
-        //
+        $this->id = $id;
     }
 
     /**
@@ -23,6 +24,13 @@ class ProductView extends Component
      */
     public function render()
     {
-        return view('components.product-view', ["test"=>"test123"]);
+        $produto = Produtos::where('id', $this->id)->first();
+        if ($produto != null){
+            $preco = $produto->preco;
+
+            if ($produto->desconto != 0.00)
+                $preco = $preco - ($preco * ($produto->desconto / 100.0));
+            return view('components.product-view', ["nome"=>$produto->nome, "preco"=>$preco, "preco_antes"=>$produto->preco, "path"=>$produto->img_path]);
+        }
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\CategoriasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,5 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/categorias', function () {
-    return view('categorias');
-});
+Route::resource('produtos', ProdutosController::class);
+Route::resource('categorias', CategoriasController::class);

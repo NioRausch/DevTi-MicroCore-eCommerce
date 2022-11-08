@@ -1,15 +1,14 @@
-
 <!-- Contatos e login -->
 <div class="w-7/12 min-w-[900px] h-14 mx-auto flex">
     <div class="m-4 w-1/2 flex">
-        <div class="space-x-3">
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-twitter"></i>
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-youtube"></i>
-            <i class="bi bi-pinterest"></i>
+        <div class="space-x-3 select-none">
+            <i class="bi bi-facebook hover:cursor-pointer"></i>
+            <i class="bi bi-twitter hover:cursor-pointer"></i>
+            <i class="bi bi-instagram hover:cursor-pointer"></i>
+            <i class="bi bi-youtube hover:cursor-pointer"></i>
+            <i class="bi bi-pinterest hover:cursor-pointer"></i>
         </div>
-        <i class="bi bi-telephone-fill ml-10 mr-2"></i>
+        <i class="bi bi-telephone-fill ml-10 mr-2 mt-1"></i>
         (xx) xx xxxxxxxxxx
     </div>
 
@@ -35,7 +34,8 @@
     </div>
 
     <div class="w-1/2 ml-auto float-right flex justify-end mb-4">
-        <div class="hover:cursor-pointer w-20 h-20 mr-5 mt-6 text-center transition ease-in-out delay-75 hover:scale-110">
+        <div
+            class="hover:cursor-pointer w-20 h-20 mr-5 mt-6 text-center transition ease-in-out delay-75 hover:scale-110">
             <i class="text-light bi bi-cart text-5xl"></i>
             <br>
             <h4 class="font-bold">Carrinho</h4>
