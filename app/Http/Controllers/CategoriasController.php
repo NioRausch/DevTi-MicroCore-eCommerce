@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categorias;
+use App\Models\Produtos;
+
+use Illuminate\Database\Eloquent\Model;
 
 class CategoriasController extends Controller
 {
@@ -13,7 +17,12 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        return view("categorias");
+        $categorias = Categorias::all();
+        $categorias_nomes = $categorias->pluck("nome");
+
+        $produtos = Produtos::all()->pluck("id");
+
+        return view("categorias",["categorias"=>$categorias_nomes, "produtos_ids"=>$produtos]);
     }
 
     /**
@@ -45,7 +54,14 @@ class CategoriasController extends Controller
      */
     public function show($id)
     {
-        return view("categorias");
+        $categorias = Categorias::all();
+        $categorias_nomes = $categorias->pluck("nome");
+
+        $categoria = $id;
+
+        $produtos = Categorias::where("nome", $id)->produtos()->pluck("id");
+
+        return view("categorias",["categorias"=>$categorias_nomes, "produtos_ids"=>$produtos]);
     }
 
     /**

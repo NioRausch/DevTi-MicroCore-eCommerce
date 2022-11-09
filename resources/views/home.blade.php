@@ -18,10 +18,10 @@
                 </div>
 
                 <div class="windowsize mb-10 grid grid-flow-col justify-evenly ">
-                    <x-product-view id="1" />
-                    <x-product-view id="6" />
-                    <x-product-view id="7" />
-                    <x-product-view id="8" />
+                    @foreach ($ofertas as $oferta)
+                    <x-product-view id="{{$oferta['produto_id']}}" />
+                    @endforeach
+
 
 
                 </div>
