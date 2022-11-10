@@ -1,4 +1,4 @@
-<div class="produto">
+<div class="produto" id="{{$id}}">
     <img class="w-full h-40 object-contain" src="{{ asset('imgs/' . $path) }}">
     <h2 class="w-full h-[4.5rem] font-semibold overflow-hidden text-slate-700">
         {{$nome}}
@@ -12,3 +12,9 @@
     <h3 class="text-light text-3xl font-bold font-kanit"> R$ {{$preco}}</h3>
     <h3 class="text-slate-400 text-2sm font-kanit"> A vistá no pix!</h3>
 </div>
+
+<script>
+$("#{{$id}}").click(function() {
+    location.href = "/produtos/{{$id}}"
+})
+</script>

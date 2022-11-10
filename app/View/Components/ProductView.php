@@ -30,7 +30,7 @@ class ProductView extends Component
 
             if ($produto->desconto != 0.00)
                 $preco = $preco - ($preco * ($produto->desconto / 100.0));
-            return view('components.product-view', ["nome"=>$produto->nome, "preco"=>$preco, "preco_antes"=>$produto->preco, "path"=>$produto->img_path]);
+            return view('components.product-view', ["nome"=>$produto->nome, "preco"=>$preco, "preco_antes"=>$produto->preco, "path"=>$produto->img_path, "id"=>$this->id]);
         }
     }
 }

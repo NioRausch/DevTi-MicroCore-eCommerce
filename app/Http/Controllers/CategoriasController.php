@@ -57,9 +57,9 @@ class CategoriasController extends Controller
         $categorias = Categorias::all();
         $categorias_nomes = $categorias->pluck("nome");
 
-        $categoria = $id;
+        $categoria_id = Categorias::where("nome", $id)->get("id")->first()["id"];
 
-        $produtos = Categorias::where("nome", $id)->produtos()->pluck("id");
+        $produtos = Produtos::all()->where("categoria_id", $categoria_id)->pluck("id");
 
         return view("categorias",["categorias"=>$categorias_nomes, "produtos_ids"=>$produtos]);
     }

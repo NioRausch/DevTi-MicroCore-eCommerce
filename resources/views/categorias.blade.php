@@ -32,6 +32,8 @@
                     @foreach ($produtos_ids as $id)
                     <x-product-view id="{{$id}}" />
                     @endforeach
+
+
                 </div>
             </div>
 
