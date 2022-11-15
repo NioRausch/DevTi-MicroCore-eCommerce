@@ -1,7 +1,7 @@
 @include("app")
 
 
-<body class="antialiased bg-bglight dark:bg-bgdark">
+<body class="antialiased bg-bglight">
 
     <div class="flex">
         <!-- Header -->
@@ -16,7 +16,7 @@
                     <div class="mb-6">
                         <input value="{{$categoria_nome}}" type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
-                    <button id="submit" type="submit" class="hover:cursor-pointer m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Editar</button>
+                    <button id="submit" type="submit" class="hover:cursor-pointer m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center">Editar</button>
                 </form>
 
             </div>

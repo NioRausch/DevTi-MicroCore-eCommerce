@@ -1,7 +1,7 @@
 @include("app")
 
 
-<body class="antialiased bg-bglight dark:bg-bgdark">
+<body class="antialiased bg-bglight">
 
     <div class="flex">
         <!-- Header -->
@@ -33,7 +33,7 @@
 
                     <button id="submit" type="submit" class="mt-10 hover:cursor-pointer  text-white bg-blue-700 hover:bg-blue-800
                      focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center
-                      dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Criar produto</button>
+                     ">Criar produto</button>
 
             </div>
             @include("templates.footer")

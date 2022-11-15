@@ -1,6 +1,6 @@
 @include("app")
 
-<body class="antialiased bg-bglight dark:bg-bgdark">
+<body class="antialiased bg-bglight">
     <script>
     function href(url) {
         location.href = url;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="" lang="{{ str_replace('_', '-', app()->getLocale()) }}" @include("app") <body class="antialiased bg-bglight dark:bg-bgdark">
+<html class="" lang="{{ str_replace('_', '-', app()->getLocale()) }}" @include("app") <body class="antialiased bg-bglight">
 <div class="flex">
     <!-- Header -->
     <div class="w-full">
@@ -8,7 +8,7 @@
 
         <!-- Ofertas do dia -->
         <div class="w-full min-w-[900px] mt-6">
-            <div class="rounded-sm  windowsize h-12 mb-10 bg-bgdark dark:bg-light">
+            <div class="rounded-sm  windowsize h-12 mb-10 bg-bgdark">
                 <h2 class="font-tesla text-2xl text-white m-auto">OFERTAS DO DIA</h2>
 
             </div>
@@ -25,7 +25,7 @@
 
         <!-- Conheça nossa loja -->
         <div class="w-full min-w-[900px] mt-6">
-            <div class="rounded-sm  windowsize h-12 mb-10 bg-bgdark dark:bg-light">
+            <div class="rounded-sm  windowsize h-12 mb-10 bg-bgdark">
                 <h2 class="font-tesla text-2xl text-white m-auto">Conheça a nossa loja!</h2>
             </div>
             <div class="windowsize max-w-[900px] h-[500px] grid grid-flow-col grid-cols-2 grid-rows-3 gap-5">

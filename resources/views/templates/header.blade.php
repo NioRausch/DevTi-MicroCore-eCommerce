@@ -1,8 +1,8 @@
 <!-- Contatos e login -->
-<div class="w-7/12 min-w-[900px] h-14 mx-auto flex">
-    <div class="m-4 w-1/2 flex">
+<div class="w-7/12 min-w-[900px] h-14 mx-auto flex ">
+    <div class="m-4 w-1/2 flex ">
         <div class="space-x-3 select-none">
-            <i class="bi bi-facebook hover:cursor-pointer"></i>
+            <i class="bi bi-facebook hover:cursor-pointer "></i>
             <i class="bi bi-twitter hover:cursor-pointer"></i>
             <i class="bi bi-instagram hover:cursor-pointer"></i>
             <i class="bi bi-youtube hover:cursor-pointer"></i>

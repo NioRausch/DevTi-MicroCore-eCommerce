@@ -29,7 +29,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
 
 @layer components {
     .titles {
-      @apply font-semibold p-2 m-auto rounded hover:text-white  hover:bg-blue-800 transition ease-out delay-75;
+      @apply font-semibold p-2 m-auto rounded text-black hover:text-white  hover:bg-blue-800 transition ease-out delay-75;
     }
     .divider {
         @apply left-1/2 -ml-0.5 w-0.5 h-10 mt-auto mb-auto bg-gray-500;
@@ -51,7 +51,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
     }
 
     *{
-        @apply subpixel-antialiased dark:text-txtdark;
+        @apply subpixel-antialiased dark:text-txtdark text-black;
         font: "Kanit";
     }
   }
