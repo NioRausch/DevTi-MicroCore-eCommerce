@@ -17,6 +17,8 @@ return new class extends Migration
             $table->increments("id");
             $table->string("nome");
             $table->string("descricao");
+            $table->string('img_path');
+            $table->decimal('desconto', 10, 2);
             $table->decimal('preco', 10, 2);
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');

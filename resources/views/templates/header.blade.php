@@ -27,15 +27,14 @@
 <div class="windowsize h-34 ">
     <div class="mt-2 h-[110px] flex">
         <svg class="h-[110px] ml-[-15px] fill-light " viewBox="0 0 843.000000 684.000000">
-            @include("logo")
+            @include("templates.logo")
         </svg>
 
         <h3 class="text-3xl mt-auto mb-auto h-7 logo">MicroCore</h3>
     </div>
 
     <div class="w-1/2 ml-auto float-right flex justify-end mb-4">
-        <div
-            class="hover:cursor-pointer w-20 h-20 mr-5 mt-6 text-center transition ease-in-out delay-75 hover:scale-110">
+        <div class="hover:cursor-pointer w-20 h-20 mr-5 mt-6 text-center transition ease-in-out delay-75 hover:scale-110">
             <i class="text-light bi bi-cart text-5xl"></i>
             <br>
             <h4 class="font-bold">Carrinho</h4>

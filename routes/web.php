@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\CategoriasController;
-use App\Models\Ofertas;  
+use App\Models\Ofertas;
+use App\Models\Categorias;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,15 @@ use App\Models\Ofertas;
 */
 
 Route::get('/', function () {
-    return view('home', ["ofertas"=>Ofertas::all()]);
+    return view('home', ["ofertas" => Ofertas::all()]);
+});
+
+Route::get('/categorias-config', function () {
+    $categorias = Categorias::all();
+    $categorias_nomes = $categorias->pluck("nome");
+    $categorias_id = $categorias->pluck("id");
+
+    return view('categorias.config', ["categorias" => $categorias]);
 });
 
 Route::resource('produtos', ProdutosController::class);
