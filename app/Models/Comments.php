@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ofertas extends Model
+use App\Models\Produtos;
+
+class Comments extends Model
 {
     use HasFactory;
 
-    function getOfertas()
+    public function prodtuo()
     {
-        $ofertas = $this->all()->get('produto_id');;
-        return $ofertas;
+        return $this->belongsTo(Produtos::class);
     }
 }

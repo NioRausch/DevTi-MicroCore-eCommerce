@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Categorias;
 use App\Models\Produtos;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-class CategoriasController extends Controller
+class CarrinhoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +15,15 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $categorias = Categorias::all();
-        $categorias_nomes = $categorias->pluck("nome");
+        $ids_carrinho = session('ids_carrinho');
 
-        $produtos = Produtos::all()->pluck("id");
+        if ($ids_carrinho == null)
+            $ids_carrinho = [];
 
-        return view("categorias.index", ["categorias" => $categorias_nomes, "produtos_ids" => $produtos]);
+        $produtos = Produtos::whereIn('id', $ids_carrinho)->get();
+
+
+        return view('carrinho', ["produtos" => $produtos]);
     }
 
     /**
@@ -32,7 +33,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        return view("categorias.create");
+        //
     }
 
     /**
@@ -43,12 +44,14 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categorias;
+        $ids_carrinho = session('ids_carrinho');
 
-        $categoria->nome = $request->name;
+        if ($ids_carrinho == null)
+            $ids_carrinho = [];
 
-        $categoria->save();
-        return ("test");
+        array_push($ids_carrinho, $request->id);
+
+        session(['ids_carrinho' => $ids_carrinho]);
     }
 
     /**
@@ -59,14 +62,7 @@ class CategoriasController extends Controller
      */
     public function show($id)
     {
-        $categorias = Categorias::all();
-        $categorias_nomes = $categorias->pluck("nome");
-
-        $categoria_id = Categorias::where("nome", $id)->get("id")->first()["id"];
-
-        $produtos = Produtos::all()->where("categoria_id", $categoria_id)->pluck("id");
-
-        return view("categorias.index", ["categorias" => $categorias_nomes, "produtos_ids" => $produtos]);
+        //
     }
 
     /**
@@ -77,11 +73,7 @@ class CategoriasController extends Controller
      */
     public function edit($id)
     {
-        $categoria_nome = Categorias::where("id", $id)->get("nome")->first()["nome"];
-
-
-
-        return view("categorias.edit", ['categoria_nome' => $categoria_nome, 'id' => $id]);
+        //
     }
 
     /**
@@ -93,10 +85,7 @@ class CategoriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Categorias::where('id', $id)
-            ->update(['nome' => $request->name]);
-
-        return "done";
+        //
     }
 
     /**
@@ -107,9 +96,15 @@ class CategoriasController extends Controller
      */
     public function destroy($id)
     {
-        $flight = Categorias::find($id);
 
-        $flight->delete();
-        return "Done delete";
+        $ids_carrinho = session('ids_carrinho');
+
+        if ($ids_carrinho == null)
+            $ids_carrinho = [];
+
+        unset($ids_carrinho[(int)$id]);
+
+        session(['ids_carrinho' => $ids_carrinho]);
+        return (int)$id;
     }
 }

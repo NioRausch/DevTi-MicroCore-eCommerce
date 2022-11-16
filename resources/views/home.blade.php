@@ -15,7 +15,7 @@
 
             <div class="windowsize mb-10 grid grid-flow-col justify-evenly ">
                 @foreach ($ofertas as $oferta)
-                <x-product-view id="{{$oferta['produto_id']}}" />
+                <x-product-view id="{{$oferta['id']}}" />
                 @endforeach
 
 

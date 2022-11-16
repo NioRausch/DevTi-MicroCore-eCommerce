@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produtos;
+use App\Models\Categorias;
+
 
 
 class ProdutosController extends Controller
@@ -27,7 +29,10 @@ class ProdutosController extends Controller
     {
         //
 
-        return view("produtos.create");
+        $categorias = Categorias::all();
+        //$categorias_nomes = $categorias->pluck("nome");
+
+        return view("produtos.create", ["categorias" => $categorias]);
     }
 
     /**
@@ -55,9 +60,29 @@ class ProdutosController extends Controller
 
         //Store IMage in DB 
 
+        $produto = new Produtos;
 
-        return back()->with('success', 'Image uploaded Successfully!')
-            ->with('image', $imageName);
+        $produto->nome = $request->nome;
+        $produto->preco = $request->price;
+        $produto->descricao = $request->desc;
+        $produto->img_path = $imageName;
+
+        if ($request->oferta == "on")
+            $produto->oferta = 1;
+        else
+            $produto->oferta = 0;
+
+        $produto->desconto = $request->desconto;
+        $produto->categoria_id = $request->categoria_id;
+
+        $produto->save();
+
+        $categorias = Categorias::all();
+        $categorias_nomes = $categorias->pluck("nome");
+
+        $produtos = Produtos::all()->pluck("id");
+
+        return view("categorias.index", ["categorias" => $categorias_nomes, "produtos_ids" => $produtos]);
     }
 
     /**
@@ -93,7 +118,13 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categorias = Categorias::all();
+        //$categorias_nomes = $categorias->pluck("nome");
+
+        $produto = Produtos::find($id);
+
+
+        return view("produtos.edit", ["categorias" => $categorias, "produto" => $produto]);
     }
 
     /**
@@ -105,7 +136,40 @@ class ProdutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produto = Produtos::find($id);
+
+        if ($request->image != null) {
+
+            $request->validate([
+                'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+            ]);
+
+            $imageName = time() . '.' . $request->image->extension();
+
+            // Public Folder
+            $request->image->move(public_path('images'), $imageName);
+            $produto->img_path = $imageName;
+        }
+
+        if ($request->oferta == "on")
+            $produto->oferta = 1;
+        else
+            $produto->oferta = 0;
+
+        $produto->nome = $request->nome;
+        $produto->preco = $request->price;
+        $produto->descricao = $request->desc;
+        $produto->desconto = $request->desconto;
+        $produto->categoria_id = $request->categoria_id;
+
+        $produto->save();
+
+        $categorias = Categorias::all();
+        $categorias_nomes = $categorias->pluck("nome");
+
+        $produtos = Produtos::all()->pluck("id");
+        return dd($request->oferta);
+        return view("categorias.index", ["categorias" => $categorias_nomes, "produtos_ids" => $produtos]);
     }
 
     /**
@@ -116,6 +180,9 @@ class ProdutosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produto = Produtos::find($id);
+
+        $produto->delete();
+        return "Done delete";
     }
 }

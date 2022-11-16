@@ -4,8 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CarrinhoController;
 use App\Models\Ofertas;
 use App\Models\Categorias;
+use App\Models\Produtos;
 
 
 
@@ -21,9 +23,10 @@ use App\Models\Categorias;
 */
 
 Route::get('/', function () {
-    return view('home', ["ofertas" => Ofertas::all()]);
+    return view('home', ["ofertas" => Produtos::where("oferta", 1)->get()]);
 });
 
+Route::resource('carrinho', CarrinhoController::class);
 Route::resource('produtos', ProdutosController::class);
 Route::resource('categorias', CategoriasController::class);
 

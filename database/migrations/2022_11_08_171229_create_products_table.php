@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('img_path');
             $table->decimal('desconto', 10, 2);
             $table->decimal('preco', 10, 2);
+            $table->boolean('oferta');
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
